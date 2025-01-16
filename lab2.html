@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прямокутник</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body
+        {
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(253, 233, 206);
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .box
+        {
+            height: 100hv;
+            width: 100%;
+            margin: 30px 100px;
+            padding:10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            background-color: rgb(243, 223, 197);
+        }
+        .box label
+        {
+            font-weight: bold;
+            display: block;
+            text-align: center;
+        }
+        .box input
+        {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #cccccc;
+            border-radius: 4px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .box p 
+        {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+
+
+    </style>
+</head>
+
+<body>  
+    <div class="box">
+        <label for="length">Довжина</label>
+        <input type="number" id="length" placeholder="Введіть довжину">
+
+        <label for="width">Ширина</label>
+        <input type="number" id="width" placeholder="Введіть ширину">
+
+        <p>Периметр: <span id="p">0</span></p>
+        <p>Площа: <span id="s">0</span></p>
+        <p>Діагональ: <span id="d">0</span></p>
+
+    </div>
+    <script>
+        const lengthI = document.getElementById("length");
+        const widthI = document.getElementById("width");
+        const p = document.getElementById("p");
+        const s = document.getElementById("s");
+        const d = document.getElementById("d");
+
+
+        function calculate() {
+            const length = parseFloat(lengthI.value) || 0;
+            const width = parseFloat(widthI.value) || 0;
+
+            if (length <= 0 || width <= 0) {
+                p.textContent = 0;
+                s.textContent = 0;
+                d.textContent = 0;
+            }
+            else 
+            {
+                const pV = 2 * (length + width);
+                const sV = length * width;
+                const dV = Math.sqrt(length ** 2 + width ** 2).toFixed(4);
+
+                p.textContent = pV;
+                s.textContent = sV;
+                d.textContent = dV;
+            }
+            
+        }
+
+        lengthI.addEventListener("input", calculate);
+        widthI.addEventListener("input", calculate);
+
+    </script>    
+
+</body>
+
+
+
+
+
+
+</html>
